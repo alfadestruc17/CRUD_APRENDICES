@@ -1,5 +1,6 @@
 <?php
 
+
 class database {
     private string $host = "localhost";
     private string $db = "aprendices";
