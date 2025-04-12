@@ -120,38 +120,9 @@ $programas = $catalogo->obtener('programa_de_formacion');
 
 
     <div class="d-grid">
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="submit" class="btn btn-primary">Crear</button>
     </div>
 </form>
-
-<script>
-    document.getElementById('formAprendiz').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        let form = this;
-        if (!form.checkValidity()) {
-            e.stopPropagation();
-            form.classList.add('was-validated');
-        } else {
-            Swal.fire({
-                title: '¿Estás seguro?',
-                text: "Se guardará la información del aprendiz.",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#198754',
-                cancelButtonColor: '#dc3545',
-                confirmButtonText: 'Sí, guardar'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    form.submit(); 
-                }
-            });
-        }
-    });
-</script>
-
-
-
 
 <?php
 require_once "C://laragon/www/CRUD_APRENDICES/views/head/footer.php";
