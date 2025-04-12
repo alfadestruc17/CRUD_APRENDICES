@@ -15,7 +15,7 @@ $programas = $catalogo->obtener('programa_de_formacion');
 
 <form action="../../controller/aprendiz_controller.php" method="POST">
   <div>
-    <label>Primer nombre</label>
+    <label >Primer nombre</label>
     <input type="text" name="primer_nombre" required>
   </div>
   <div>

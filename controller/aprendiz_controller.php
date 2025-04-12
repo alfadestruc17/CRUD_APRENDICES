@@ -26,3 +26,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Todos los campos son obligatorios.";
     }
 }
+
+
