@@ -14,80 +14,142 @@ $programas = $catalogo->obtener('programa_de_formacion');
 ?>
 
 <form action="../../controller/aprendiz_controller.php" method="POST">
-  <div>
-    <label >Primer nombre</label>
-    <input type="text" name="primer_nombre" required>
-  </div>
-  <div>
-    <label>Segundo nombre</label>
-    <input type="text" name="segundo_nombre">
-  </div>
-  <div>
-    <label>Primer apellido</label>
-    <input type="text" name="primer_apellido" required>
-  </div>
-  <div>
-    <label>Segundo apellido</label>
-    <input type="text" name="segundo_apellido">
-  </div>
-  <div>
-    <label>Documento</label>
-    <input type="number" name="documento" required>
-  </div>
 
-  <div>
-    <label>Tipo de documento</label>
-    <select name="id_tipo_documento" required>
-      <option value="">Seleccione...</option>
-      <?php foreach ($tipos_documento as $tipo): ?>
-        <option value="<?= $tipo['id'] ?>"><?= $tipo['nombre'] ?></option>
-      <?php endforeach; ?>
-    </select>
-  </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <div>
-    <label>Sexo</label>
-    <select name="id_genero" required>
-      <option value="">Seleccione...</option>
-      <?php foreach ($generos as $genero): ?>
-        <option value="<?= $genero['id'] ?>"><?= $genero['tipo'] ?></option>
-      <?php endforeach; ?>
-    </select>
-  </div>
+<form id="formAprendiz" action="../../controller/aprendiz_controller.php" method="POST" class="container mt-4 needs-validation" novalidate>
 
-  <div>
-    <label>Grupo sanguíneo</label>
-    <select name="id_grupo_sanguineo" required>
-      <option value="">Seleccione...</option>
-      <?php foreach ($grupos_sangre as $grupo): ?>
-        <option value="<?= $grupo['id'] ?>"><?= $grupo['grupo'] ?></option>
-      <?php endforeach; ?>
-    </select>
-  </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">Primer nombre</label>
+            <input type="text" name="primer_nombre" class="form-control" required>
+            <div class="invalid-feedback">Este campo es obligatorio.</div>
+        </div>
 
-  <div>
-    <label>Factor sanguíneo</label>
-    <select name="id_factor_sanguineo" required>
-      <option value="">Seleccione...</option>
-      <?php foreach ($factores_sangre as $factor): ?>
-        <option value="<?= $factor['id'] ?>"><?= $factor['factor'] ?></option>
-      <?php endforeach; ?>
-    </select>
-  </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">Segundo nombre</label>
+            <input type="text" name="segundo_nombre" class="form-control" required>
+            <div class="invalid-feedback">Este campo es obligatorio.</div>
+        </div>
 
-  <div>
-    <label>Programa de formación</label>
-    <select name="id_programa" required>
-      <option value="">Seleccione...</option>
-      <?php foreach ($programas as $programa): ?>
-        <option value="<?= $programa['id'] ?>"><?= $programa['nombre'] ?></option>
-      <?php endforeach; ?>
-    </select>
-  </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">Primer apellido</label>
+            <input type="text" name="primer_apellido" class="form-control" required>
+            <div class="invalid-feedback">Este campo es obligatorio.</div>
+        </div>
 
-  <button type="submit">Guardar</button>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">segundo apellido</label>
+            <input type="text" name="segundo_apellido" class="form-control" required>
+            <div class="invalid-feedback">Este campo es obligatorio.</div>
+        </div>
+
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">Documento</label>
+            <input type="number" name="documento" class="form-control" required>
+            <div class="invalid-feedback">Este campo es obligatorio.</div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Tipo de documento</label>
+            <select name="id_tipo_documento" class="form-select" required>
+                <option value="">Seleccione...</option>
+                <?php foreach ($tipos_documento as $tipo): ?>
+                    <option value="<?= $tipo['id'] ?>"><?= $tipo['nombre'] ?></option>
+                <?php endforeach; ?>
+            </select>
+            <div class="invalid-feedback">Seleccione un tipo de documento.</div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">Sexo</label>
+            <select name="id_genero" class="form-select" required>
+                <option value="">Seleccione...</option>
+                <?php foreach ($generos as $genero): ?>
+                    <option value="<?= $genero['id'] ?>"><?= $genero['tipo'] ?></option>
+                <?php endforeach; ?>
+            </select>
+            <div class="invalid-feedback">Seleccione una opción.</div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Grupo sanguíneo</label>
+            <select name="id_grupo_sanguineo" class="form-select" required>
+                <option value="">Seleccione...</option>
+                <?php foreach ($grupos_sangre as $grupo): ?>
+                    <option value="<?= $grupo['id'] ?>"><?= $grupo['grupo'] ?></option>
+                <?php endforeach; ?>
+            </select>
+            <div class="invalid-feedback">Seleccione un grupo sanguíneo.</div>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">Factor sanguíneo</label>
+            <select name="id_factor_sanguineo" class="form-select" required>
+                <option value="">Seleccione...</option>
+                <?php foreach ($factores_sangre as $factor): ?>
+                    <option value="<?= $factor['id'] ?>"><?= $factor['factor'] ?></option>
+                <?php endforeach; ?>
+            </select>
+            <div class="invalid-feedback">Seleccione un factor.</div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Programa de formación</label>
+            <select name="id_programa" class="form-select" required>
+                <option value="">Seleccione...</option>
+                <?php foreach ($programas as $programa): ?>
+                    <option value="<?= $programa['id'] ?>"><?= $programa['nombre'] ?></option>
+                <?php endforeach; ?>
+            </select>
+            <div class="invalid-feedback">Seleccione un programa.</div>
+        </div>
+    </div>
+
+    <!-- Último -->
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
 </form>
 
+<script>
+    // Validación Bootstrap + alerta SweetAlert2
+    document.getElementById('formAprendiz').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        let form = this;
+        if (!form.checkValidity()) {
+            e.stopPropagation();
+            form.classList.add('was-validated');
+        } else {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "Se guardará la información del aprendiz.",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#198754',
+                cancelButtonColor: '#dc3545',
+                confirmButtonText: 'Sí, guardar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit(); // Envía el formulario si el usuario confirma
+                }
+            });
+        }
+    });
+</script>
 
 
 
