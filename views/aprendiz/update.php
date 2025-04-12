@@ -40,18 +40,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt->execute();
 
-        // Redirigir con éxito
         header("Location: show.php?msg=actualizado");
         exit;
-
     } catch (PDOException $e) {
         echo "<div class='alert alert-danger m-4'>Error al actualizar: " . $e->getMessage() . "</div>";
     }
-
 } else {
     echo "<div class='alert alert-warning m-4'>Acceso inválido.</div>";
 }
 header("Location: show.php?msg=actualizado");
 exit;
-
-?>

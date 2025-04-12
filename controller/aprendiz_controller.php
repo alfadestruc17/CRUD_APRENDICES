@@ -1,6 +1,6 @@
 <?php
 require_once '../model/Aprendiz.php';
-require_once '../../views/aprendiz/show.php'; 
+
 
 $aprendiz = new Aprendiz();
 
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Todos los campos son obligatorios.";
     }
 }
-
+require_once '../../views/aprendiz/show.php'; 
 $aprendiz = new Aprendiz();
 $aprendices = $aprendiz->obtenerAprendices(); 
 

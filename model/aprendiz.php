@@ -9,6 +9,8 @@ class Aprendiz {
     private $pdo;
 
     public function __construct() {
+        
+
         $this->pdo = database::conexion();
     }
 
