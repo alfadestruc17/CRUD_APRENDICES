@@ -77,6 +77,17 @@ $aprendices = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
 </body>
+<?php if (isset($_GET['msg']) && $_GET['msg'] == 'actualizado'): ?>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    Swal.fire({
+      icon: 'success',
+      title: '¡Actualización exitosa!',
+      showConfirmButton: false,
+      timer: 2000
+    });
+  </script>
+<?php endif; ?>
 
 </html>
 

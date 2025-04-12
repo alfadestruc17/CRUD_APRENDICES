@@ -58,7 +58,30 @@ class Aprendiz {
                 INNER JOIN programa_formacion pf ON apf.id_programa_formacion = pf.id";
     
         $stmt = $this->pdo->query($sql);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Asegúrate de que esto retorne un array
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
     }
-        
+    public function actualizar_aprendiz($aprendiz) {
+        $sql = "UPDATE personas SET 
+                    primer_nombre = ?,
+                    segundo_nombre = ?,
+                    primer_apellido = ?,
+                    segundo_apellido = ?,
+                    id_tipo_documento = ?,
+                    id_grupo_sanguineo = ?,
+                    id_factor_sanguineo = ?,
+                    id_genero = ?
+                WHERE id = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([
+            $aprendiz['primer_nombre'],
+            $aprendiz['segundo_nombre'],
+            $aprendiz['primer_apellido'],
+            $aprendiz['segundo_apellido'],
+            $aprendiz['id_tipo_documento'],
+            $aprendiz['id_grupo_sanguineo'],
+            $aprendiz['id_factor_sanguineo'],
+            $aprendiz['id_genero'],
+            $aprendiz['id_persona']
+        ]);
+    }
 }
