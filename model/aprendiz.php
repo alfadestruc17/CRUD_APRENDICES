@@ -44,21 +44,21 @@ class Aprendiz {
         $stmt->execute([$id_aprendiz, $id_programa]);
     }
     public function obtenerAprendices() {
-    $sql = "SELECT 
-                a.id AS id_aprendiz,
-                p.primer_nombre,
-                p.primer_apellido,
-                p.documento,
-                td.tipo_documento,
-                pf.nombre_programa
-            FROM aprendices a
-            INNER JOIN personas p ON a.id_persona = p.id
-            INNER JOIN tipo_documento td ON p.id_tipo_documento = td.id
-            INNER JOIN aprendiz_programa apf ON apf.id_aprendiz = a.id
-            INNER JOIN programa_formacion pf ON apf.id_programa_formacion = pf.id";
-
-    $stmt = $this->pdo->query($sql);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
+        $sql = "SELECT 
+                    a.id AS id_aprendiz,
+                    p.primer_nombre,
+                    p.primer_apellido,
+                    p.documento,
+                    td.tipo_documento,
+                    pf.nombre_programa
+                FROM aprendices a
+                INNER JOIN personas p ON a.id_persona = p.id
+                INNER JOIN tipo_documento td ON p.id_tipo_documento = td.id
+                INNER JOIN aprendiz_programa apf ON apf.id_aprendiz = a.id
+                INNER JOIN programa_formacion pf ON apf.id_programa_formacion = pf.id";
+    
+        $stmt = $this->pdo->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Asegúrate de que esto retorne un array
+    }
+        
 }

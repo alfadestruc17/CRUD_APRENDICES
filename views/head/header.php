@@ -13,7 +13,7 @@
   <div class="container-fluid bg-dark p-2 mb-3">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="c://laragon/www/CRUD_APRENDICES/index.php">inicio</a>
+        <a class="navbar-brand" href="/CRUD_APRENDICES/index.php">inicio</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,7 @@
                 Aprendices
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/CRUD_APRENDICES/views/aprendiz/index.php">Ver aprendices</a></li>
+                <li><a class="dropdown-item" href="/CRUD_APRENDICES/views/aprendiz/show.php">Ver aprendices</a></li>
                 <li><a class="dropdown-item" href="/CRUD_APRENDICES/views/aprendiz/create.php">Crear aprendices</a></li>
               </ul>
             </li>
