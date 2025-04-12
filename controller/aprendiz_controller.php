@@ -21,16 +21,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id_aprendiz = $aprendiz->insertarAprendiz($id_persona);
         $aprendiz->asociarPrograma($id_aprendiz, $_POST['id_programa']);
 
-        header('Location: /index.php');
+        header('Location: /CRUD_APRENDICES/index.php');
     } else {
         echo "Todos los campos son obligatorios.";
     }
 }
 
-require_once '../../model/Aprendiz.php'; // Ajusta ruta según tu estructura
+require_once '../../model/Aprendiz.php'; 
 
 $aprendiz = new Aprendiz();
-$aprendices = $aprendiz->obtenerAprendices(); // Este es el array que debes enviar a la vista
+$aprendices = $aprendiz->obtenerAprendices(); 
 
-require_once '../../views/aprendiz/show.php'; // Asegúrate de incluirlo correctamente
+require_once '../../views/aprendiz/show.php'; 
 

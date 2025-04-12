@@ -118,14 +118,13 @@ $programas = $catalogo->obtener('programa_de_formacion');
         </div>
     </div>
 
-    <!-- Último -->
+
     <div class="d-grid">
         <button type="submit" class="btn btn-primary">Guardar</button>
     </div>
 </form>
 
 <script>
-    // Validación Bootstrap + alerta SweetAlert2
     document.getElementById('formAprendiz').addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -144,7 +143,7 @@ $programas = $catalogo->obtener('programa_de_formacion');
                 confirmButtonText: 'Sí, guardar'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    form.submit(); // Envía el formulario si el usuario confirma
+                    form.submit(); 
                 }
             });
         }
