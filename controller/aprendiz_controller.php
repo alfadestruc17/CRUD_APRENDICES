@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id_aprendiz = $aprendiz->insertarAprendiz($id_persona);
         $aprendiz->asociarPrograma($id_aprendiz, $_POST['id_programa']);
 
-        header('Location: /CRUD_APRENDICES/index.php');
+        header('Location: /CRUD_APRENDICES/views/aprendiz/show.php');
     } else {
         echo "Todos los campos son obligatorios.";
     }

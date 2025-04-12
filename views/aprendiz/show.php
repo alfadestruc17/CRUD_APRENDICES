@@ -60,11 +60,14 @@ $aprendices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td><?= htmlspecialchars($documento) ?></td>
                         <td><?= htmlspecialchars($programa) ?></td>
                         <td>
+                            <a href="ver.php?id=<?= $id ?>" class="btn btn-info btn-sm">
+                            <i class="fa-solid fa-eye"></i>
+                            </a>
                             <a href="edit.php?id=<?= $id ?>" class="btn btn-warning btn-sm">
-                                <i class="fas fa-edit"></i> Editar
+                                <i class="fas fa-edit"></i> 
                             </a>
                             <a href="delete.php?id=<?= $id ?>" class="btn btn-danger btn-sm">
-                                <i class="fas fa-trash"></i> Eliminar
+                                <i class="fas fa-trash"></i> 
                             </a>
                         </td>
                     </tr>
