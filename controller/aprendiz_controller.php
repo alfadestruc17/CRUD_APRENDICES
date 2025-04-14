@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'documento'          => $_POST['documento'],
             'id_tipo_documento'  => $_POST['id_tipo_documento'],
             'id_grupo_sanguineo' => $_POST['id_grupo_sanguineo'],
-            'id_factor_sanguineo'=> $_POST['id_factor_sanguineo'],
+            'id_factor_sanguineo' => $_POST['id_factor_sanguineo'],
             'id_genero'          => $_POST['id_genero']
         ];
 
@@ -27,9 +27,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Todos los campos son obligatorios.";
     }
 }
-require_once '../../views/aprendiz/show.php'; 
+
+if (isset($_GET['accion']) && $_GET['accion'] === 'eliminar' && isset($_GET['id'])) {
+    $idAprendiz = $_GET['id'];
+    $aprendiz->eliminarAprendiz($idAprendiz);
+
+    header("Location: ../views/aprendiz/show.php?mensaje=eliminado");
+    exit();
+}
+
+
+require_once '../../views/aprendiz/show.php';
 $aprendiz = new Aprendiz();
-$aprendices = $aprendiz->obtenerAprendices(); 
+$aprendices = $aprendiz->obtenerAprendices();
 
 
 

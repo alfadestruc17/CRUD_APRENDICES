@@ -61,12 +61,12 @@ $aprendices = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td><?= htmlspecialchars($programa) ?></td>
                         <td>
                             <a href="ver.php?id=<?= $id ?>" class="btn btn-info btn-sm">
-                            <i class="fa-solid fa-eye"></i>
+                                <i class="fa-solid fa-eye"></i>
                             </a>
                             <a href="edit.php?id=<?= $id ?>" class="btn btn-warning btn-sm">
-                                <i class="fas fa-edit"></i> 
+                                <i class="fas fa-edit"></i>
                             </a>
-                            <a href="delete.php?id=<?= $id ?>" class="btn btn-danger btn-sm">
+                            <a href="#" class="btn btn-danger btn-sm btn-eliminar" data-id="<?= $id ?>">
                                 <i class="fas fa-trash"></i> 
                             </a>
                         </td>
@@ -76,18 +76,53 @@ $aprendices = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </table>
     </div>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.querySelectorAll('.btn-eliminar').forEach(boton => {
+    boton.addEventListener('click', function (e) {
+        e.preventDefault();
+        const id = this.dataset.id;
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "No podrás revertir esto.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Sí, eliminar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = `/CRUD_APRENDICES/controller/aprendiz_controller.php?accion=eliminar&id=${id}`;
+            }
+        })
+    });
+});
+</script>
+<?php if (isset($_GET['mensaje']) && $_GET['mensaje'] === 'eliminado'): ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            title: '¡Eliminado!',
+            text: 'El aprendiz fue eliminado correctamente.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        });
+    </script>
+<?php endif; ?>
+
 </body>
 
 <?php if (isset($_GET['msg']) && $_GET['msg'] == 'actualizado'): ?>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-    Swal.fire({
-      icon: 'success',
-      title: '¡Actualización exitosa!',
-      showConfirmButton: false,
-      timer: 2000
-    });
-  </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: '¡Actualización exitosa!',
+            showConfirmButton: false,
+            timer: 2000
+        });
+    </script>
 <?php endif; ?>
 
 </html>

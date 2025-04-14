@@ -30,7 +30,7 @@ $programas = $catalogo->obtener('programa_de_formacion');
     <div class="row mb-3">
         <div class="col-md-6">
             <label class="form-label">Segundo nombre</label>
-            <input type="text" name="segundo_nombre" class="form-control" required>
+            <input type="text" name="segundo_nombre" class="form-control" >
             <div class="invalid-feedback">Este campo es obligatorio.</div>
         </div>
 
@@ -46,7 +46,7 @@ $programas = $catalogo->obtener('programa_de_formacion');
     <div class="row mb-3">
         <div class="col-md-6">
             <label class="form-label">segundo apellido</label>
-            <input type="text" name="segundo_apellido" class="form-control" required>
+            <input type="text" name="segundo_apellido" class="form-control">
             <div class="invalid-feedback">Este campo es obligatorio.</div>
         </div>
 
