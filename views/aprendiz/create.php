@@ -12,6 +12,30 @@ $grupos_sangre = $catalogo->obtener('grupo_sanguineo');
 $factores_sangre = $catalogo->obtener('factor_sanguineo');
 $programas = $catalogo->obtener('programa_de_formacion');
 ?>
+<script>
+    function soloLetras(event) {
+        const key = event.key;
+        const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/;
+
+        if (!regex.test(key)) {
+            event.preventDefault();
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        const camposTexto = [
+            'primer_nombre',
+            'segundo_nombre',
+            'primer_apellido',
+            'segundo_apellido'
+        ];
+        camposTexto.forEach(function (nombreCampo) {
+            const input = document.querySelector(`input[name="${nombreCampo}"]`);
+            if (input) {
+                input.addEventListener('keypress', soloLetras);
+            }
+        });
+    });
+</script>
 
 <form action="../../controller/aprendiz_controller.php" method="POST">
 
@@ -123,6 +147,29 @@ $programas = $catalogo->obtener('programa_de_formacion');
         <button type="submit" class="btn btn-primary">Crear</button>
     </div>
 </form>
+<script>
+    document.getElementById("formAprendiz").addEventListener("submit", function (e) {
+        const regexSoloLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+
+        const campos = ['primer_nombre', 'segundo_nombre', 'primer_apellido', 'segundo_apellido'];
+        let validacionCorrecta = true;
+
+        campos.forEach(function (campo) {
+            const valor = document.querySelector(`input[name="${campo}"]`).value.trim();
+            if (valor !== "" && !regexSoloLetras.test(valor)) {
+                validacionCorrecta = false;
+            }
+        });
+        if (!validacionCorrecta) {
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Error de validación',
+                text: 'Solo se permiten letras en los campos de nombre y apellido.'
+            });
+        }
+    });
+</script>
 
 <?php
 require_once "C://laragon/www/CRUD_APRENDICES/views/head/footer.php";
