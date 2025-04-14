@@ -48,5 +48,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "<div class='alert alert-warning m-4'>Acceso inválido.</div>";
 }
-header("Location: show.php?msg=actualizado");
 exit;

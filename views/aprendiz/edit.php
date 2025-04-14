@@ -43,7 +43,30 @@ $generos = $conexion->query("SELECT * FROM genero")->fetchAll(PDO::FETCH_ASSOC);
 $grupos_sangre = $conexion->query("SELECT * FROM grupo_sanguineo")->fetchAll(PDO::FETCH_ASSOC);
 $factores_sangre = $conexion->query("SELECT * FROM factor_sanguineo")->fetchAll(PDO::FETCH_ASSOC);
 ?>
+<script>
+    function soloLetras(event) {
+        const key = event.key;
+        const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/;
 
+        if (!regex.test(key)) {
+            event.preventDefault();
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        const camposTexto = [
+            'primer_nombre',
+            'segundo_nombre',
+            'primer_apellido',
+            'segundo_apellido'
+        ];
+        camposTexto.forEach(function (nombreCampo) {
+            const input = document.querySelector(`input[name="${nombreCampo}"]`);
+            if (input) {
+                input.addEventListener('keypress', soloLetras);
+            }
+        });
+    });
+</script>
 <div class="container mt-5">
     <h2>Editar información del aprendiz</h2>
     <form action="update.php" method="POST" class="mt-4">
@@ -124,7 +147,9 @@ $factores_sangre = $conexion->query("SELECT * FROM factor_sanguineo")->fetchAll(
 
         <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Guardar cambios</button>
         <a href="show.php" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Volver</a>
+
     </form>
 </div>
+
 
 <?php require_once("../head/footer.php"); ?>
